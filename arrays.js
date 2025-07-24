@@ -41,7 +41,10 @@ console.log(month);
 const products=[
    { type: "Electronics", subType: "Mobile", category: "Contract Updates", subCategory: "Application Received", isEnabled: false },
    { type: "Electronics", subType: "Labtop", category: "Contract Updates", subCategory: "Premium Processed", isEnabled: true },
-   { type: "Electronics", subType: "Head-Phone", category: "Contract Updates", subCategory: "Requirements Added", isEnabled: false },
+   { type: "Electronics", subType: "HeadPhone", category: "Contract Updates", subCategory: "Requirements Added", isEnabled: false },
+   { type: "Clothing", subType: "Shirt", category: "Contract Updates", subCategory: "Application Received", isEnabled: false },
+   { type: "Clothing", subType: "Pant", category: "Contract Updates", subCategory: "Premium Processed", isEnabled: true },
+   { type: "Sports", subType: "Volleyball", category: "Contract Updates", subCategory: "Requirements Added", isEnabled: true },
   ];
 
   products.forEach(product=>console.log(product));
@@ -68,8 +71,173 @@ const updatedProduct = products.map(product => {
 
    console.log(products.some(product=>product.isEnabled===true));
 
+   const findProduct=products.find(product=>product.subType==="Mobile");
+
+   console.log(findProduct);
 
 
+   const array=[4,5,6,4,7];
+
+   const  sumarray=array.reduce((acc,num)=>
+    {
+         return acc+num;
+    },0);
+ 
+     console.log(sumarray);
+
+   const maxValue=[1,100].reduce((acc,cur)=>
+   {
+        return acc>cur?acc:cur
+   },20);
+
+           console.log(maxValue);
+
+   const minValue=[1,100].reduce((acc,cur)=>
+  {
+      return acc<cur?acc:cur;
+  })
+
+       console.log(minValue);
+
+   const isenabled=products.reduce((count,product)=>
+   {
+         return product.isEnabled?count+1:count;
+   },0);
+
+  console.log(isenabled);
+
+
+  const groupType=products.reduce((acc,product)=>
+    {
+      acc[product.type]=(acc[product.type]||0)+1;
+      return acc;
+    },{});
+
+    console.log(groupType);
+ 
+
+
+  const groupsubType=products.reduce((acc,product)=>
+  {
+        
+         acc[product.subType]= (acc[product.subType] || 0) + 1;
+         return acc;
+  },{});
+
+  console.log(groupsubType);
+
+const toys=[{ball:10},{bat:5},{ball:10}];
+
+const groupToys=toys.reduce((acc,curr)=>
+{
+       for(const key in curr)
+       {
+          acc[key]=(acc[key]||0)+curr[key];
+       }
+       return acc;
+},{})
+
+console.log(groupToys);
+
+
+const number1=[5,4,3,2,1];
+
+const totalsum=number1.reduceRight((acc,curr)=> acc+curr,5);
+console.log(totalsum);
+
+const numbers2=["1","2","3","4","5"];
+const Reduceright=numbers2.reduceRight((acc,curr)=>acc+curr);
+
+console.log(Reduceright);
+
+const Reduceleft=numbers2.reduce((acc,curr)=>acc+curr);
+
+console.log(Reduceleft);
+
+const Reduceright1=[1,4,6, ,12, ,6].reduceRight((acc,curr)=>
+{
+    return acc+curr;
+});
+console.log(Reduceright1);
+
+const Reduceright2=[1,4,6,undefined ,12,undefined ,6].reduceRight((acc,curr)=>
+{
+    return acc+curr;
+});
+console.log(Reduceright2);
+
+
+const scores=[34,67,56,97,88,10];
+
+const reversedScores=scores.toReversed(scores);
+
+console.log("Normal",scores);
+
+console.log("To reverse array",reversedScores);
+
+const arrayLike={
+  length:4,
+  [0]:2,
+  [1]:4,
+  [2]:3,
+  [3]:5
+};
+
+const reversearraylike=Array.prototype.toReversed.call(arrayLike);
+
+console.log(reversearraylike);
+
+const studentnames=["Ram","Abinaya","Adhira","Deepak","deepa"];
+
+console.log(studentnames.toSorted());
+
+console.log(studentnames);
+
+const classrooms=[{Class:'A',total:25},
+                  {Class:'B',total:24},
+                  {Class:'C',total:45},
+                 {Class:'D',total:35}];
+
+const findClass=classrooms.find(({ Class }) => Class === 'A');
+
+console.log(findClass);
+
+const arraylist=[5,10,15,30,45];
+
+const iterator=arraylist.entries();
+
+console.log(iterator.next().value);
+console.log(iterator.next().value);
+
+console.log("Now array will continue");
+
+for(const element of iterator)
+{
+  console.log(element);
+}
+
+const nestedarray=[1,[2,[3,[4,[5]]]]];
+
+console.log(nestedarray.flat());
+
+console.log(nestedarray.flat(5));
+
+
+const arrayElement=[1,4,9,16,25];
+
+const newArray=arrayElement.flatMap((element)=>[element,element*element]);
+
+console.log(newArray);
+
+const sentences=["Hi","I am Senthil Kumar","from Palani"];
+
+const map=sentences.map(sentence=>sentence.split(" "));
+
+console.log(map);
+
+const flattenmap=sentences.flatMap(sentence=>sentence.split());
+
+console.log(flattenmap);
 
 
 

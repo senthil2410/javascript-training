@@ -3,7 +3,7 @@ const intnum=5;
 
 console.log(typeof(intnum));   // In js we having only number not  int,float,d0uble like other programming languages 
 
-const weight=152.2456982345;
+const weight=152;
 console.log(weight);
 console.log(weight.toFixed());
 console.log(weight.toFixed(2));
