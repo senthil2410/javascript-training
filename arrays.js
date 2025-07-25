@@ -238,14 +238,3 @@ console.log(map);
 const flattenmap=sentences.flatMap(sentence=>sentence.split());
 
 console.log(flattenmap);
-
-
-
-
-
-
-
-
-
-
-
