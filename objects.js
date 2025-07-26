@@ -7,12 +7,11 @@ const  person={
 console.log(person);
 
 console.log(person.place);
-
 console.log(person["place"]);
-
 person["email"]="senthil@gmail.com";
 
 console.log(person["place"]);
+
 console.log(person);
 
 person["eligibeForVoting"]=function()
@@ -46,6 +45,7 @@ const createObject=(name,age,place,...hobbies)=>
 }
 
 console.log("Object created using the  functions");
+
 const Kumar=createObject("kumar",18,"Dharapuram",["cricket","football"]);
 
 Kumar.eligibeForVoting();
@@ -55,7 +55,6 @@ console.log("Object careated using the Functions",Kumar);
 const Thanagaraj=createObject("thanagarj",45,"Pollachi",["agriculture","reading"]);
 
 console.log(Thanagaraj.name);
-
 console.log(Thanagaraj.age);
 
 Thanagaraj.eligibeForVoting();
@@ -72,7 +71,7 @@ function Createobject(name,age)
    {
        if(this.age>18)
        {
-        console.log(`Person is ${age} and he is eligible for voting `);
+        console.log(`Person is ${this.age} and he is eligible for voting `);
        }
    }
 
