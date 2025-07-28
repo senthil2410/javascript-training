@@ -1,7 +1,4 @@
 
-
-// shallow copy
-
 const Student = {
   name: "Kavin",
   place: "Dharapuram",

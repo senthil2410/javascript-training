@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+       
+    <h1>Alarm-app</h1>
+      
+    <input type="time" id="time"  placeholder="Enter the Time">
+
+      <button id="setalarm">Set Alarm</button>
+
+      <button id="stopalarm" disabled>Stop alarm</button>
+
+      
+
+   <script>
+        const time=document.getElementById("time");
+        const setAlarm=document.getElementById("setalarm");
+      
+       const stopAlarm=document.getElementById("stopalarm");
+
+      
+        const events= new EventSource("http://localhost:3000/events");
+
+      
+       let alarmtime=null;
+       let alarmactive=false;
+       let intervaltime=null;
+
+        setAlarm.addEventListener("click",()=>
+       {
+               alarmtime=time.value;
+              alarmactive=true;
+              alert(`Alarm set on ${alarmtime}`);
+              stopAlarm.disabled=false;
+       })
+
+       stopAlarm.addEventListener("click",()=>
+      {
+           alarmactive=false;
+           alarmtime=null;
+           clearInterval(intervaltime);
+           alert('Alarm stopped');
+      })
+
+         
+
+          function triggerAlarm() {
+           if (alarmactive && intervaltime === null)  {
+               
+               console.log("wakeup");
+
+               
+
+                intervaltime = setInterval(() => {
+                    alert("Please wake up"); 
+                }, 1000); 
+
+
+            }
+        }
+
+        events.onmessage = (event) => {
+          
+            const currenttime = event.data;
+            const [currenthour, currentminute] = currenttime.split(":");
+
+            if (alarmtime) { 
+               
+                const [alarmhour, alarmminute] = alarmtime.slice(1,5).split(":");
+               console.log(alarmhour,alarmminute,currenthour,currentminute);
+               
+                if (currenthour === alarmhour && currentminute === alarmminute && alarmactive) {
+               setTimeout(()=>
+               {
+                   console.log("Sneeze time got finished");
+                    alarmactive=false;
+                    alarmtime=null;
+                    clearInterval(intervaltime);
+                    
+               },30000)
+
+                    triggerAlarm();
+                }
+            }
+        };
+
+   </script>
+</body>
+</html>

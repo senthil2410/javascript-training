@@ -101,3 +101,54 @@ console.log(secondStudent);
 console.log(restofStudents);
 
 
+const match1=
+{
+  team1:"Rajasthan",
+  team2:"Chennai"
+}
+
+function play(team)
+{
+  console.log(`In the match between the ${this.team1} vs ${this.team2}. ${team} elected to bat first`);
+}
+
+function match2()
+{
+   this.team1="Mumbai",
+   this.team2="Kolkata"
+}
+
+
+const secondmatch=new match2();
+
+play.call(match1,"Rajasthan");
+
+play.call(secondmatch,"Kolkata");
+
+
+function play2(time,venue)
+{
+    console.log(`The match between ${this.team1} and ${this.team2} starts at ${time} in ${venue}`);
+}
+
+play2.apply(secondmatch,["8.30pm","Kolkata"]);
+
+play2.apply(match1,["4:00pm","CHENNAI"]);
+
+
+const csk=
+{
+    fteam:"CSK",
+    
+    getFavouriteTeam:function()
+    {
+      console.log(`My favourite team is ${this.fteam}`);
+    }
+
+}
+const favouriteTeam=csk.getFavouriteTeam.bind(csk);
+favouriteTeam();
+
+
+
+
