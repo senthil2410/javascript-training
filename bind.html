@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind</title>
+</head>
+<body>
+    <h1 style="text-align: center; padding: 10px; margin: 10px;">Bind-Function in js</h1>
+
+    <button id="bind">CSK-favourite Team</button>
+
+
+ <script>
+
+    const button=document.getElementById('bind');
+
+     const favourite=
+     {
+        team:"CSK",
+        getFavouriteTeam:function()
+        {
+             console.log(`My favourite team is ${this.team}`);
+        }
+     }
+
+    button.addEventListener("click",favourite.getFavouriteTeam);
+
+    button.addEventListener("click",favourite.getFavouriteTeam.bind(favourite));
+ </script>
+
+</body>
+</html>
