@@ -49,6 +49,8 @@ account.withdraw(200);
 
 console.log(account.getbalance());
 
+//console.log(account.balance)  We cannot directly access the  variable...
+
 
 
 
