@@ -238,3 +238,16 @@ console.log(map);
 const flattenmap=sentences.flatMap(sentence=>sentence.split());
 
 console.log(flattenmap);
+
+
+const arraynumbers=[1,2,3,4,[5,6,7,8]];
+
+console.log(arraynumbers[0]);
+console.log(arraynumbers[1]);
+console.log(arraynumbers[4]);
+
+const [first,second,...rest]=arraynumbers;
+
+console.log(first);
+console.log(second);
+console.log(rest);
