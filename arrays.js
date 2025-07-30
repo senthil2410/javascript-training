@@ -239,7 +239,6 @@ const flattenmap=sentences.flatMap(sentence=>sentence.split());
 
 console.log(flattenmap);
 
-
 const arraynumbers=[1,2,3,4,[5,6,7,8]];
 
 console.log(arraynumbers[0]);
@@ -251,3 +250,51 @@ const [first,second,...rest]=arraynumbers;
 console.log(first);
 console.log(second);
 console.log(rest);
+
+const studentmarks=[
+  {
+    fname:"Suchind" ,mark:85
+  },
+  {
+    fname:"Thainesh" ,mark:72
+  },
+  {
+    fname:"Tharun" ,mark:63
+  },
+  {
+    fname:"Rakesh" ,mark:54
+  },
+];
+
+const topper=studentmarks.filter(hmark=>hmark.mark>70)
+                         .map(hname=>hname.fname.toUpperCase());
+
+console.log(topper);
+
+const schoolThings = [
+  { item: "book", price: 160, inStock: 2 },
+  { item: "pen", price: 20, inStock: 3 },
+  { item: "notebook", price: 60, inStock: 4},
+  { item: "pencil", price: 8, inStock: 4}
+];
+
+const writable = schoolThings
+  .filter(things => things.item.startsWith("p"))
+  .reduce((acc, curr) => acc + (curr.inStock * curr.price), 0)
+
+console.log(writable);
+
+const ipl = [
+  { name: "Raina", runs: 4500, team: "CSK" },
+  { name: "Gambhir", runs: 2040, team: "kkr" },
+  { name: "Kolhi", runs: 4400, team: "RCB" },
+  { name: "Dhoni", runs: 4001, team: "CSK" },
+  { name: "Jadeja", runs: 2000, team: "CSK" }
+];
+
+const csk=ipl.filter(player=>player.team==="CSK")
+             .filter(player=>player.runs>4000)
+             .reduce((acc,player)=>acc+player.runs,0);
+
+
+console.log(csk);

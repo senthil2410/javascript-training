@@ -1,7 +1,5 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import axios from "axios";
-
-
 const fetchData = async (url) => {
   try {
     const response = await fetch(url);
@@ -46,8 +44,3 @@ const fetchTitle=async(url)=>
 }
 
 fetchTitle("https://fakestoreapi.com/products");
-
-
-
-
-

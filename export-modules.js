@@ -47,4 +47,17 @@ const adminDetails=()=>
 
 }
 
+// const userDetails=()=>
+// {
+//      const username="role";                         // THere should be only export default in our program, if we need to export multiple use export only
+
+//      const email="admin@gmail.com";
+
+//      return `the name ${username} and his mail id is ${email}`;
+
+// }
+
+// export default userDetails;  
+
 export default adminDetails;
+

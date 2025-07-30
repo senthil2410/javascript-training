@@ -9,16 +9,6 @@ fetchPromise.then((response) => {
   console.log(`Received response: ${response.status}`);
 });
 
-fetch('https://jsonplaceholder.typicode.com/posts/1')
-.then((response)=>response.json())
-.then((data)=>console.log(data.body));
-
-
-fetch('https://jsonplaceholder.typicode.com/posts')
-.then((response)=>response.json())
-.then((data)=>console.log(data.body));
-
-
 fetch('https://jsonplaceholder.typicode.com/posts')
 .then((response)=>{
    if(!response.ok)
@@ -28,7 +18,8 @@ fetch('https://jsonplaceholder.typicode.com/posts')
  return response.json();
  
 })
-.then((data)=>console.log(data.title));
+.then((data)=>console.log(data.title))
+.catch((error)=>console.error())
 
 fetch('https://jsonplaceholder.typicode.com/po')
 .then(response=>
@@ -103,21 +94,56 @@ const fetchdata3=fetch("https://jsonplaceholder.typicode.com/posts/3");
 
 Promise.all([fetchdata1,fetchdata2,fetchdata3])
  .then((responses)=>{
-      for(const response of responses)
-      {
-        console.log(`The response arae ${response.url}  and satatus code is ${response.status}`);
-      }
+      // for(const response of responses)
+      // {
+      //   console.log(`The response arae ${response.url}  and satatus code is ${response.status}`);
+      // }
+      console.log("All method responsess", responses)
    } )
- .catch((err)=>console.log(`There is some network error ${err}`));
+ .catch((err)=>console.log(`fetch all error ${err}`));
 
-
-
- 
 
 Promise.any([fetchdata1,fetchdata2,fetchdata3])
  .then((response)=>response.json())  
  .then(data=>console.log(data))
  .catch((err)=>console.log(`There is some network error ${err}`));
+
+const fetchdata4=fetch("https://jsonplaceholder.typicode.com/posts/4");
+
+const fetchdata5=fetch("https://jsonplaceholder.typicode.com/posts/5");
+
+const fetchdata6=fetch("https://jsonplaceholder.typicode.com/posts/6");
+
+
+Promise.race([fetchdata4,fetchdata5,fetchdata6])
+ .then((response)=>response.json())  
+ .then(data=>console.log("fetch-race-example",data))
+ .catch((err)=>console.log(` promise race example ${err}`));
+
+ const fetchdata7=fetch("https://jsonplaceholder.typicode.com/posts/1");
+
+const fetchdata8=fetch("https://jsonplaceholder.typicode.com/posts/2");
+
+const fetchdata9=fetch("https://jsonplaceholder.typicode.com/posts/3");
+
+Promise.allSettled([fetchdata7,fetchdata8,fetchdata9])
+ .then((responses)=>{
+     responses.forEach((value)=>
+     {
+           if(value.status==="fulfilled")
+           {
+             const response=value;
+
+             console.log(`The promise all settled example ${response.status} and ${response.title}`);
+           }
+           else{
+               console.log(`Thre is an error while fetching the data from url  "all-settled"`);
+           }
+     })
+    
+   } )
+ .catch((err)=>console.log(`There is some network error ${err}`));
+
 
 
 
