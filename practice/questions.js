@@ -203,20 +203,24 @@ console.log(argument("Senthil",34,"Dharapuram"));
 
 
 function formData({ number, amount, name = '' }) {
-    const formattedNumber = new Intl.NumberFormat('en-US').format(number);
+    const Number = new Intl.NumberFormat('en-US')
+    
+    const formatNumber=Number.format(number);
 
-    const formattedCurrency = new Intl.NumberFormat('en-US', {
+    const Currency = new Intl.NumberFormat('en-US', {
         style: 'currency',
 
         currency:'USD'
-    }).format(amount);
+    })
+
+    const formatCurrency=Currency.format(amount);
 
     const capitalizedName = name[0].toUpperCase()+name.slice(1)
         
 
     return {
-        formattedNumber,
-        formattedCurrency,
+        formatNumber,
+        formatCurrency,
         capitalizedName
     };
 
