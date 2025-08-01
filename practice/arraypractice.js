@@ -106,7 +106,192 @@ const product3=newproduct2.map(product=>
 console.log(product3);
 
 
+const training=["JLM","INSURANCE","CSHARP","RPA","AI"];
 
+console.log(training.find(domain=>domain==="CSHARP"));
+console.log(training.find(domain=>domain==="C-SHARP"));
+
+
+const data = [[1, 2, 3, 4], [5, 6, 7], [8, 9]]
+
+const evendata=data.map(subarray=>subarray.filter(num=>(num%2==0)));
+
+console.log(evendata);
+
+const text="Javascript";
+
+const freqarray=[...text].reduce((acc,letter)=>
+{
+        acc[letter]=(acc[letter]||0)+1;
+        return acc;
+},{});
+
+let freqletter=null;
+let freq=0;
+
+for(const letter in freqarray)
+{
+    if(freqarray[letter]>freq)
+    {
+        freq=freqarray[letter];
+         freqletter=letter
+    }
+}
+
+console.log(`The most occured character ${freqletter} and is frequency is ${freq}`);
+
+const transactions = [
+  { id: 1, type: 'deposit', amount: 2000, account: 'savings', date: '2025-07-01' },
+  { id: 2, type: 'withdrawal', amount: 300, account: 'checking', date: '2025-07-03' },
+  { id: 3, type: 'deposit', amount: 1200, account: 'checking', date: '2025-07-04' },
+  { id: 4, type: 'deposit', amount: 4000, account: 'savings', date: '2025-07-05' },
+  { id: 5, type: 'withdrawal', amount: 800, account: 'savings', date: '2025-07-06' },
+  { id: 6, type: 'deposit', amount: 500, account: 'checking', date: '2025-07-07' },
+  { id: 7, type: 'withdrawal', amount: 100, account: 'checking', date: '2025-07-08' },
+  { id: 8, type: 'deposit', amount: 1000, account: 'savings', date: '2025-07-10' },
+  { id: 9, type: 'withdrawal', amount: 150, account: 'checking', date: '2025-07-12' },
+  { id: 10, type: 'deposit', amount: 750, account: 'checking', date: '2025-07-13' }
+];
+
+const depositAmount=transactions.filter(transact=>transact.type==="deposit")
+                                   .reduce((acc,transact)=>
+                                {
+                                    return acc+transact.amount;
+                                },0)
+console.log(depositAmount);
+
+const desposit=transactions.filter((transact)=>transact.type==="deposit");
+
+const depositdate=desposit.reduce((acc,curr)=>
+{
+    acc[curr.date]=(acc[curr.date]||0)+curr.amount;
+    return acc;
+},{})
+
+console.log(depositdate);
+
+const [date,highAmount]=Object.entries(depositdate).reduce(([maxdate,maxamount],[date,amount])=>
+{
+     if(amount >maxamount)
+     {
+        [maxdate,maxamount]=[date,amount];
+     }
+     return [maxdate,maxamount];
+},["",0]);
+
+console.log(date,highAmount);
+
+const withdraw=transactions.filter(txn=>txn.type==="withdrawal");
+
+console.log(withdraw);
+
+const withdrawdate=withdraw.reduce((acc,curr)=>
+{
+    acc[curr.date]=(acc[curr.date]||0)+curr.amount;
+    return acc;
+
+},{});
+
+console.log(withdrawdate);
+
+const maxwithdraw=Object.entries(withdrawdate).reduce((maxAmount,[date,amount])=>
+{
+     return maxAmount<amount ? amount :  maxAmount
+},0)
+
+console.log(maxwithdraw);
+
+const transaction1=transactions.filter(txn=>txn.type==="withdrawal" && txn.amount<450)
+                               .map(txn=>
+                               ({
+                                 ...txn,
+                                amount:txn.amount+(txn.amount*8)/100
+                               }));
+console.log(transaction1);
+
+const dummyData = [
+  {
+    id: 1,
+    name: "Alice",
+    role: "Manager",
+    contact: {
+      email: "alice@example.com",
+      phone: "123-456-7890",
+      address: { city: "New York", country: "USA" }
+    },
+    projects: [
+      { projectId: "P101", name: "Project Alpha", status: "Completed", budget: 50000 },
+      { projectId: "P102", name: "Project Beta", status: "In Progress", budget: 20000 }
+    ]
+  },
+  {
+    id: 2,
+    name: "Bob",
+    role: "Developer",
+    contact: {
+      email: "bob@example.com",
+      phone: "987-654-3210",
+      address: { city: "San Francisco", country: "USA" }
+    },
+    projects: [
+      { projectId: "P103", name: "Project Gamma", status: "Not Started", budget: 10000 },
+      { projectId: "P104", name: "Project Delta", status: "In Progress", budget: 15000 }
+    ]
+  },
+  {
+    id: 3,
+    name: "Carol",
+    role: "Designer",
+    contact: {
+      email: "carol@example.com",
+      phone: "555-666-7777",
+      address: { city: "London", country: "UK" }
+    },
+    projects: []
+  },
+  {
+    id: 4,
+    name: "David",
+    role: "QA Engineer",
+    contact: {
+      email: "david@example.com",
+      phone: "333-222-1111",
+      address: { city: "Berlin", country: "Germany" }
+    },
+    projects: [
+      { projectId: "P105", name: "Project Epsilon", status: "Completed", budget: 12000 }
+    ]
+  },
+  {
+    id: 5,
+    name: "Eva",
+    role: "Developer",
+    contact: {
+      email: "eva@example.com",
+      phone: "444-333-2222",
+      address: { city: "Paris", country: "France" }
+    },
+    projects: [
+      { projectId: "P106", name: "Project Zeta", status: "In Progress", budget: 30000 },
+      { projectId: "P107", name: "Project Eta", status: "Not Started", budget: 18000 },
+      { projectId: "P108", name: "Project Theta", status: "Completed", budget: 25000 }
+    ]
+  },
+  {
+    id: 6,
+    name: "Frank",
+    role: "Manager",
+    contact: {
+      email: "frank@example.com",
+      phone: "777-888-9999",
+      address: { city: "Tokyo", country: "Japan" }
+    },
+    projects: [
+      { projectId: "P109", name: "Project Iota", status: "In Progress", budget: 40000 }
+    ]
+  }
+];
+ 
 
 
 

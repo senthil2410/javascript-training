@@ -70,3 +70,27 @@ defaultParameter(7);
 
 defaultParameter();
 
+// Higher order Functions
+
+const currying=(value)=>
+{
+    return (value1)=>
+    {
+        return  value*value1
+    }
+}
+
+const multiple2=currying(2);
+
+const result=multiple2(5);
+
+console.log("Higher order",result);
+
+const result1=multiple2(10);
+
+console.log(result1);
+
+// Map,filter and reduce  are higher order functions
+
+
+
