@@ -60,7 +60,7 @@ const updateStudents=Students.map(Student=>
 
 const update=Students.map(Student=>(
 
-       {...Student,isEmployed:true}
+       {...Student,isEmployed:false}
 ));
 
 console.log("Using spread operator to update array of objects ",update);
@@ -333,7 +333,7 @@ const groupdata1=Object.groupBy(highestscore,({team})=>
 console.log(groupdata1.groupA);
 
 const kxip=Object.create(punjab);   // it has no own property.
-console.log("Own property example",kxip);       // so the out will the null
+console.log("Own property example");       // so the out will the null
 
 console.log("Own property",Object.hasOwn(kxip,"captain"));
 

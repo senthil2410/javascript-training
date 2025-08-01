@@ -41,6 +41,9 @@ const fetchTitle=async(url)=>
    catch (err) {
     console.log(`There is some error: ${err}`);
   }
+  finally{
+    console.log("Finally -block always runs-It is used to clean up code ");
+  }
 }
 
 fetchTitle("https://fakestoreapi.com/products");

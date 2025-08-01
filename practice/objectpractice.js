@@ -135,7 +135,19 @@ const kkr=
 
 Object.freeze(kkr);
 
-kkr.vice="Iyer";
+kkr.vice="Iyer"; // we cannot modify or edit or add properties
 
 console.log(kkr);
+
+const date= new Date('2018','9','17');
+
+let dateobject=date;
+
+do{
+    dateobject=Object.getPrototypeOf(dateobjectobject);
+
+    console.log(dateobject)
+}while(dateobject);
+
+
 
