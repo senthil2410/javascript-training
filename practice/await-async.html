@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Github-example</title>
+   <style>
+      .container {
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #e78d8d;
+      border-radius: 8px;
+    }
+
+    #username{
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+   </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">Fetching the Github </h1>
+
+    <input type="text" id="username"  placeholder="username">
+  
+</div>
+
+    <script>
+       const userinput=document.getElementById('username');
+      
+
+       userinput.addEventListener("keypress",async(e)=>
+      {
+        if(e.key==='Enter')
+       {
+          const username=userinput.value.trim();
+          if(!username)
+          {
+             return;
+          }
+
+          try{
+            const res=await fetch(`https://api.github.com/users/${username}`);
+            if(!res.ok)
+           {
+               throw new Error('User not found');
+           }
+           setTimeout(()=>
+          {
+               window.location.href=`https://github.com/${username}`;
+          },1000)
+
+          }
+          catch(err)
+          {
+              console.log(`There is some network error`,err);
+          }
+       }
+
+      })
+
+    </script>
+</body>
+</html>
