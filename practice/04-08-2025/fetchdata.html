@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch-data</title>
+
+    <style>
+        .container
+        {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            width: 50%;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(198, 209, 209);
+            height: 50vh;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Fetch Data</h1>
+
+     <div class="container">
+        <div id="input-box">
+            <input type="1" max="100"  min="1" id="input" placeholder="Enter the input" required>
+            <button type="click">Fetch-data</button>
+        </div>
+    
+        <div id="users"> </div>
+     </div>
+  <script>
+       const userInput=document.getElementById('input');
+       const button=document.querySelector("button");
+       const user=document.getElementById('users');
+
+       button.addEventListener("click",async()=>
+    {
+        const input=userInput.value.trim();
+        if(!input)
+       {
+          return;
+       }
+       try
+       {
+         const respone=await fetch(`https://fakestoreapi.com/users/${input}`);
+         const data=await respone.json();
+
+            const userdata=document.createElement('div');
+            userdata.className='userdata';
+                userdata.innerHTML=`<h3> User Name : ${data.username}</h3>
+                                <h4>User ID : ${data.id}</h4>
+                                <h5>User Email: ${data.email}`;
+
+                      user.appendChild(userdata);
+         
+       }
+       catch(err)
+       {
+          console.log(err);
+          user.innerHTML=`THERE IS SOME ERROR ${err}`;
+       }
+    })
+  </script>  
+</body>
+</html>

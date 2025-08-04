@@ -50,3 +50,43 @@ function validDebitCard(cardNumber) {
 console.log(validDebitCard("1234 5678 9012 3456"));  
 console.log(validDebitCard("1234-5678-9012-3456"));  
 console.log(validDebitCard("123456789012345"));
+
+
+const regexemail=new RegExp("^[^\\s@]+@[^\\s@]+\\.(com|in)$");
+console.log(regexemail.test("senthil@gmail.com"));
+
+console.log("senthil@gmail.com".match(regexemail));
+
+console.log("senthilgmail.com".match(regexemail));
+
+
+const validatePassword=(password)=>
+{
+    const regex=new RegExp(`^(?=.*([A-Z]))(?=.*([a-z]))(?=.*(\\d))(?=.*([@$&*?!]))[A-Za-z\\d@$&*?!]{8,}$`);
+    
+    return password.match(regex)
+
+}
+
+
+const passwordmatch = validatePassword("Senthil@123");
+
+if (passwordmatch) {
+  console.log("Password is valid");
+   console.log("First letter:", passwordmatch[1]);
+} else {
+  console.log("Password is invalid");
+}
+
+const validateUsername=(username)=>
+{
+  const regex=new RegExp(`^[a-zA-Z0-9_.-]{6,20}$`)
+  console.log(regex.test(username));
+}
+
+validateUsername('setHil0024');
+
+validateUsername('SENTHIL0024');
+
+validateUsername('SENTH');
+

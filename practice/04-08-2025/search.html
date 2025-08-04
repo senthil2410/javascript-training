@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serach Example</title>
+    <style>
+         .searchcontainer
+         {
+            background-color: rgb(6, 10, 10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            gap: 10px;
+         }
+         #search
+         {
+            padding: 5px;
+            margin: 2px solid black;
+            
+         }
+         button
+         {
+            padding: 5px;
+            margin: 2px solid black;
+         }
+         button:hover
+         {
+            background-color: rgb(94, 94, 88);
+         }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Serach filter</h1>
+    <div class="searchcontainer">
+    <input type="text" id="search"  name="serachbox" placeholder="Choose the product">
+    
+    <button type="button">Search</button>
+    </div>
+    <pre id="output"></pre>
+
+    <script>
+       const serachinput=document.getElementById('search');
+       const button=document.querySelector("button");
+       const output=document.getElementById("output");
+
+       const searchProduct=["APPLE","avacoda","Bannana","Biryanai","chicken65","chilli chicken"];
+
+       button.addEventListener("click",()=>
+      {
+           const inputValue=serachinput.value.trim().toLowerCase();
+         const filtered = searchProduct.filter(product => product.toLowerCase().startsWith(inputValue));
+           //console.log(filtered)
+           let item="";
+           filtered.forEach(product=>
+           {
+             console.log(product);
+             item+=`<p>${product}</p>`
+           })
+          output.innerHTML=item;
+      })
+    </script>
+    
+</body>
+</html>
