@@ -87,6 +87,13 @@ const activeManager=dummyData.filter(worker=>worker.role==="Manager" &&
 
     console.log(activeManager);
 
+const activeManager1=dummyData.filter(({role,projects})=>
+       {            return       role==="Manager" &&
+                                      projects.some(project=>project.status==="In Progress")
+                                    });
+
+                                    
+                                      
 
   let totalProjects=0;
 

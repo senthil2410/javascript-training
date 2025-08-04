@@ -28,7 +28,6 @@ varKeyword();
 //console.log(cname);   Before declearion and instilization the const variables will be TDZ.
 
 //const cname;    //  Decleration and assignment should be t the same time otherwise it will give an syntax  error.
-
 const cname="Kumar";
 console.log(cname);
 console.log(Math.pow(11, 2));        
