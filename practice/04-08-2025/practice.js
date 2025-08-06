@@ -89,6 +89,7 @@ console.log(activeManager.map(user=>user.name));
 const totalprojects=dummyData.reduce((acc,curr)=>
 {
     const userlength=curr.projects.length;
+
     acc.totalproject+=userlength;
     acc.user.push({name:curr.name },{totalProject:userlength});
     return acc;
@@ -96,6 +97,7 @@ const totalprojects=dummyData.reduce((acc,curr)=>
 },{totalproject:0,user:[]});
 
 console.log(totalprojects);
+
 
 
 const groupStatus=dummyData.map(user=>
@@ -116,9 +118,6 @@ const groupStatus=dummyData.map(user=>
 console.dir(groupStatus, { depth: null });
 
 
-
-
-
 const groupedByStatus=dummyData.reduce((acc,curr)=>
 {
     curr.projects.forEach(project=>
@@ -127,12 +126,10 @@ const groupedByStatus=dummyData.reduce((acc,curr)=>
        {
          acc[project.status]={count:0,projectIds:[]};
        }
-       acc[project.status].count+=1;
+      acc[project.status].count+=1;
       acc[project.status].projectIds.push(project.projectId);
 
-    }
-    
-    )
+    })
     return acc;
 },{})
 
@@ -245,3 +242,13 @@ console.log(validateEmail("senthil@com"));
 console.log(validateEmail("senthil@@gmail.com"));           
 console.log(validateEmail("senthil@gmail....com"));        
 
+
+
+let sumofeven=0;
+let sumofodd=0;
+const number=[1,2,4,5,7,9];
+
+number.forEach(num=>num%2==0?sumofodd+=num:sumofeven+=num);
+
+console.log(sumofeven);
+console.log(sumofodd);

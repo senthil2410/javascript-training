@@ -146,6 +146,50 @@ Promise.allSettled([fetchdata7,fetchdata8,fetchdata9])
 
 
 
+const promise1=Promise.resolve(5);
+const promise2=Promise.resolve(6);
+const promise3=Promise.reject(4);
+
+Promise.allSettled([promise1,promise2,promise3])
+.then(results=>
+{
+   results.forEach((result,index)=>
+   {
+      if(result.status=="fulfilled")
+      {
+        console.log(`The ${index+1} fulfilled with value`,result.value);
+      }
+      else{
+        console.log(`The ${index+1} rejected with value`,result.value);
+      }
+   }
+   )
+}
+)
+
+
+const fetchusers=(url)=>
+{
+  return new Promise((resolve,reject)=>
+  {
+    setTimeout(()=>
+    {
+          if(url==='users')
+          {
+            resolve ({name:"Senthil",age:23});
+          }
+          else{
+            reject("THere is some error network error or invalid url");
+          }
+
+
+    },10000)
+  }
+)}
+
+fetchusers("users")
+ .then(user=>console.log("user data",user))
+.catch(err=>console.log("Error is",err));
 
 
 
