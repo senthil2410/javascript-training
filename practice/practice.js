@@ -212,7 +212,7 @@ console.log(results);
 
 const argument=(age,name="user",place="palani")=>
 {
-     if(!(age===undefined))
+     if(age!==undefined)
     
         return `The person name is ${name} and his age ${age} and native is ${place}`;
      else{

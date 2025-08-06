@@ -28,6 +28,7 @@ varKeyword();
 //console.log(cname);   Before declearion and instilization the const variables will be TDZ.
 
 //const cname;    //  Decleration and assignment should be t the same time otherwise it will give an syntax  error.
+
 const cname="Kumar";
 console.log(cname);
 console.log(Math.pow(11, 2));        
@@ -86,11 +87,88 @@ letKeyword();
 
 console.log("git");
 
+const sym1= Symbol(45);
 
+const sym2=Symbol(45);
 
+if(sym1===sym2)
+{
+    console.log("Both are same ");
+}
+else{
+    console.log("different");
+}
 
+const object=
+{
+    name:"Senthil",
+    age:24
+}
+const id=55;
 
+object[id]= Symbol(55);
 
+console.log(object);
 
+console.log(object.name);
 
+console.log(object.id)
+
+   // Review
+
+let a=4;
+console.log(a++ + ++a);
+
+const marks=[40,50,44,32];
+
+let total=0;
+marks.forEach((value,index)=>
+{
+    total=total+value;
+})
+
+console.log(total);
+console.log(marks);
+
+const double=marks.map(mark=>mark*2);
+
+console.log(double);
+
+console.log(marks);
+
+const mark=95;
+
+switch(mark)
+{
+     case 95:
+        console.log("90 above");
+        break;
+     case mark<90:
+        console.log("below 90");
+        break;    
+     
+
+}
+
+const fname="senthil";
+
+console.log(fname[0].toUpperCase()+fname.slice(1));
+
+const students=
+{
+    name:"Senthil",
+    age:23,
+    address:{
+        city:"palani",
+        state:"Tamil nadu",
+        country:"India"
+    }
+}
+
+for(const key in students)
+{
+    console.log(key);
+}
+
+const {name,age,address:{city,state,country}}=students;
 
