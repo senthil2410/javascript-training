@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Bubbling</title>
+   <style>
+       .hidden
+       {
+         display: none;
+       }
+   </style>
+</head>
+<body>
+       <h1>Event-Bubbling</h1>
+
+       <div id="parent-element">
+        <button type="button" id="bubblebutton">Event-Bubbling Event</button>
+       </div>
+       <pre id="output"></pre>
+
+        <button id="playbutton" style="padding: 10px; border: 2px solid black;">Play-Video</button>
+
+        <div class="hidden" id="container">
+            <video>
+               <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a7/How_to_make_video.webm/How_to_make_video.webm.720p.vp9.webm">
+               <img src="https://www.google.com/imgres?q=wikipedia%20img&imgurl=https%3A%2F%2Fpngimg.com%2Fd%2Fwikipedia_PNG24.png&imgrefurl=https%3A%2F%2Fpngimg.com%2Fimage%2F47158&docid=RY9fMvu_caqRqM&tbnid=Bfq359gCzH-nYM&vet=12ahUKEwi0qcSPyNeOAxXmV2wGHTc2NwMQM3oECBcQAA..i&w=1058&h=1296&hcb=2&ved=2ahUKEwi0qcSPyNeOAxXmV2wGHTc2NwMQM3oECBcQAA" alt="Event-bubbling">
+            </video>
+        </div>
+       
+</body>
+<script>
+       const result=document.getElementById("output");
+       const button=document.getElementById("bubblebutton");
+       const parent=document.getElementById('parent-element');
+
+
+    parent.addEventListener("click",(e)=>
+    {
+       result.textContent+=`You have clicked the ${e.currentTarget.tagName}\n`;
+       alert(`You have clicked the ${e.currentTarget.tagName} and current element \n`);
+
+    });
+    button.addEventListener("click",(e)=>
+    {
+       result.textContent+=`You have clicked the ${e.currentTarget.tagName}\n`;
+       alert(`You have clicked the ${e.currentTarget.tagName} and current element \n`);
+
+    })
+
+    const playbutton=document.getElementById("playbutton");
+    const container=document.getElementById('container');
+    const video=document.querySelector("video");
+
+
+    playbutton.addEventListener("click",()=>container.classList.remove("hidden"));
+    video.addEventListener("click",()=>video.play());
+    container.addEventListener("click",()=>container.classList.add("hidden"));
+</script>
+
+</html>

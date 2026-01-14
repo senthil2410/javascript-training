@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Capturing</title>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Event-Capturing</h1>
+    
+    <div class="container">
+
+        <button type="button" id="capturebutton">button</button>
+    </div>
+
+    <pre id="result"></pre>
+
+
+    <script>
+          const container=document.querySelector(".container");
+          const capturebutton=document.getElementById('capturebutton');
+          const output=document.getElementById("result");
+
+         document.body.addEventListener("click",(e)=>
+         {
+             output.textContent+=`THe user has clicked the ${e.currentTarget.tagName}\n`;
+         },{capture:true});
+        capturebutton.addEventListener("click",(e)=>
+        {
+            output.textContent+=`THe user has clicked the ${e.currentTarget.tagName}\n`;
+        },{capture:true});
+
+        container.addEventListener("click",(e)=>
+        {
+            output.textContent+=`THe user has clicked the ${e.currentTarget.tagName}\n`;
+        },{capture:true});
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Delegation</title>
+    <style>
+        .container
+        {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+             grid-auto-rows: 350px;
+             gap: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+     <h1 style="text-align: center;">Event Deleagtion </h1>
+     <div class="container">
+       <div class="box"></div>
+       <div class="box"></div>
+       <div class="box"></div>
+       <div class="box"></div>
+       <div class="box"></div>
+       <div class="box"></div>
+       <div class="box"></div>
+      
+
+     </div>
+
+ <script>
+      const container=document.querySelector(".container");
+
+      container.addEventListener("click",(event)=>
+    {
+        event.target.style.backgroundColor="Blue";
+    })
+ </script>
+
+</body>
+</html>
